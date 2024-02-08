@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body >
-        <div className="w-screen h-screen overscroll-hidden mt-0 mb-96 pt-0 pb-0 bg-gradient-to-r from-gray-700 via-gray-900 to-black   mx-auto px-4  sm:px-6 lg-px-8 text-black">
+        <div className="w-screen h-screen overscroll-hidden mt-0 mb-96 pt-0 pb-0 bg-white  mx-auto px-4  sm:px-6 lg-px-8 text-black">
         <div>{children}</div>
         </div>
       </body>
