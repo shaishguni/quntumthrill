@@ -6,29 +6,33 @@ export default function Chat() {
   const { messages, input, handleInputChange, handleSubmit } = useChat();
 
   return (
-      <div className="mx-auto  h-screen  overflow-hidden  w-full bg-gradient-to-r from-indigo-800 to-purple-700 text-white max-w-md p-8 rounded-lg shadow-lg">
-      {/* Display chat messages */}
-      <div className="space-y-4">
+    <div className="mx-auto w-full max-w-md py-8 flex flex-col items-center bg-gray-100 rounded-lg shadow-lg">
+      <div className="flex-1 overflow-y-auto mb-4">
         {messages.map((m) => (
-          <div key={m.id} className={`flex items-start space-x-4 ${m.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
-            <div className={`bg-${m.role === 'user' ? 'blue' : 'green'}-500 text-white p-4 rounded-lg max-w-md`}>
-              {m.content}
-            </div>
+          <div
+            key={m.id}
+            className={`mb-2 p-2 rounded ${
+              m.role === 'user' ? 'bg-blue-200' : 'bg-gray-200'
+            }`}
+          >
+            <span className={`text-${m.role === 'user' ? 'blue' : 'gray'}-800 font-bold`}>
+              {m.role === 'user' ? 'You: ' : 'AI: '}
+            </span>
+            {m.content}
           </div>
         ))}
       </div>
 
-      {/* Chat input form */}
-      <form onSubmit={handleSubmit} className="mt-96 pt-24 flex  items-center">
+      <form onSubmit={handleSubmit} className="w-full flex items-center">
         <input
-          className="flex-1 border border-gray-300 rounded-l text-black p-4 focus:outline-none focus:ring focus:border-blue-500"
-          placeholder="Type your message..."
+          className="flex-1 border rounded p-2 mr-2 focus:outline-none focus:border-blue-500"
           value={input}
           onChange={handleInputChange}
+          placeholder="Type your message..."
         />
         <button
           type="submit"
-          className="bg-blue-500 text-black py-4 px-8 rounded-r hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-500"
+          className="bg-blue-500 text-white rounded px-4 py-2 hover:bg-blue-600 focus:outline-none"
         >
           Send
         </button>
